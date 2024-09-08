@@ -1,26 +1,26 @@
-import { Component, OnInit } from '@angular/core';
-import { ProductService } from '../_services/product.service';
-import { HttpErrorResponse } from '@angular/common/http';
+import { Component } from '@angular/core';
 import { Product } from '../_model/product.model';
+import { ProductService } from '../_services/product.service';
 import { MatDialog } from '@angular/material/dialog';
-import { ShowProductImagesDialogComponent } from '../show-product-images-dialog/show-product-images-dialog.component';
 import { ImageProcessingServiceService } from '../image-processing-service.service';
-import { map } from 'rxjs';
 import { Router } from '@angular/router';
+import { map } from 'rxjs';
+import { HttpErrorResponse } from '@angular/common/http';
+import { ShowProductImagesDialogComponent } from '../show-product-images-dialog/show-product-images-dialog.component';
 
 @Component({
-  selector: 'app-show-product-details',
-  templateUrl: './show-product-details.component.html',
-  styleUrl: './show-product-details.component.css'
+  selector: 'app-show-product-distributor',
+  templateUrl: './show-product-distributor.component.html',
+  styleUrl: './show-product-distributor.component.css'
 })
-export class ShowProductDetailsComponent implements OnInit{
+export class ShowProductDistributorComponent {
 
   ngOnInit(): void {
     this.getAllProducts();
   }
 
   productDetails: Product[] = [];
-  displayedColumns: string[] = ['Product Id','Product Name','Distributor Name','Description','Discounted Price','Quantity','Actual Price','Actions'];
+  displayedColumns: string[] = ['Product Id','Product Name','Description','Discounted Price','Quantity','Actual Price','Actions'];
 
   constructor(private productService:ProductService, 
     public imagesDialog:MatDialog,
@@ -30,7 +30,7 @@ export class ShowProductDetailsComponent implements OnInit{
 
   public getAllProducts()
   {
-     this.productService.getAllProducts()
+     this.productService.getAllProductsByDistributor()
      .pipe(
       map((x:Product[],i)=>x.map((product: Product) => this.imageProcessingService.createImages(product)))
      )

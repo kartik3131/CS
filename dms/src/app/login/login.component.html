@@ -1,18 +1,12 @@
-
 <div class="container mt-5">
-    <div class="card text-center" style="padding: 20px;">
-      <form #loginForm="ngForm" (ngSubmit)="login(loginForm)">
-        <input type="text" ngModel name="userName" id="userName" placeholder="Enter your username" class="form-control mb-3">
-        <input type="password" ngModel name="userPassword" id="userPassword" placeholder="Enter your password" class="form-control mb-3">
-        <input type="submit" value="Login" class="btn btn-outline-primary form-control rounded-0">
-      </form>
-      <br>
-      <button type="button" mat-raised-button (click)="registerUser()">Create User Account</button>
-      <br>
-      <button type="button" mat-raised-button (click)="registerDistributor()">Create Distributor Account</button>
+  <div class="card text-center" style="padding: 20px;">
+    <form #loginForm="ngForm" (ngSubmit)="login(loginForm)">
+      <input type="text" ngModel name="userName" id="userName" placeholder="Enter your username" class="form-control mb-3" required>
+      <input type="password" ngModel name="userPassword" id="userPassword" placeholder="Enter your password" class="form-control mb-3" required>
+      <input type="submit" value="Login" class="btn btn-outline-primary form-control rounded-0 mb-3">
+    </form>
 
-    </div>
-
+    <button type="button" class="btn btn-outline-primary form-control rounded-0 mb-3" (click)="registerUser()">Create User Account</button>
+    <button type="button" class="btn btn-outline-primary form-control rounded-0" (click)="registerDistributor()">Create Distributor Account</button>
+  </div>
 </div>
-  
-  

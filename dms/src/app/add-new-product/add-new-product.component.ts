@@ -14,60 +14,60 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class AddNewProductComponent implements OnInit {
 
-  isNewProd =true;
+  isNewProd = true;
 
   ngOnInit(): void {
     this.product = this.activatedRoute.snapshot.data['product'];
-    if(this.product && this.product.productId)
-    {
-      this.isNewProd=false;
+    if (this.product && this.product.productId) {
+      this.isNewProd = false;
     }
   }
 
   product: Product = {
-    productId:null,
-    productName:"",
-    productDescription:"",
-    productActualPrice:0,
-    productDiscountedPrice:0,
-    productImages:[]
+    productId: null,
+    productName: "",
+    productDescription: "",
+    productActualPrice: 0,
+    productDiscountedPrice: 0,
+    productImages: [],
+    quantity: 0,
+    updatedBy: ""
   }
 
-  constructor(private productService:ProductService,
-    private sanitizer:DomSanitizer,
-    private activatedRoute:ActivatedRoute
+  constructor(private productService: ProductService,
+    private sanitizer: DomSanitizer,
+    private activatedRoute: ActivatedRoute
 
-  ){  }
+  ) { }
 
-  addProduct(productForm: NgForm)
-  {
+  addProduct(productForm: NgForm) {
     const productFormData = this.prepareFormData(this.product)
 
     this.productService.addProduct(productFormData).subscribe(
-      (response: Product)=>
-      {
+      (response: Product) => {
         productForm.reset();
-        this.product.productImages =[];
+        this.product.productImages = [];
+        // Handle successful product addition or update
+        console.log('Product added/updated successfully:', response);
       },
-      (error:HttpErrorResponse)=>
-      {
-        console.log(error);
+      (error: HttpErrorResponse) => {
+        console.error('Error occurred while adding/updating product:', error);
       }
     );
+
   }
 
 
-  prepareFormData(product:Product):FormData
-  {
+
+  prepareFormData(product: Product): FormData {
     const formData = new FormData();
 
     formData.append(
       'product',
-      new Blob([JSON.stringify(product)],{type:'application/json'})
+      new Blob([JSON.stringify(product)], { type: 'application/json' })
     );
 
-    for(var i = 0; i<product.productImages.length;i++)
-    {
+    for (var i = 0; i < product.productImages.length; i++) {
       formData.append(
         'imageFile',
         product.productImages[i].file,
@@ -79,13 +79,12 @@ export class AddNewProductComponent implements OnInit {
   }
 
   onFileSelected(event: any) {
-    if(event.target.files)
-    {
+    if (event.target.files) {
       const file = event.target.files[0];
 
-      const fileHandle : FileHandle ={
-        file:file,
-        url:this.sanitizer.bypassSecurityTrustUrl(
+      const fileHandle: FileHandle = {
+        file: file,
+        url: this.sanitizer.bypassSecurityTrustUrl(
           window.URL.createObjectURL(file)
         )
       }
@@ -95,14 +94,12 @@ export class AddNewProductComponent implements OnInit {
     }
   }
 
-  removeImages(i:number)
-  {
-    this.product.productImages.splice(i,1);
+  removeImages(i: number) {
+    this.product.productImages.splice(i, 1);
   }
 
 
-  fileDropped(fileHandle: FileHandle)
-  {
+  fileDropped(fileHandle: FileHandle) {
     this.product.productImages.push(fileHandle);
   }
 

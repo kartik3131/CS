@@ -24,13 +24,16 @@
       
       <mat-toolbar color="grey" *ngIf="isLoggedIn()">
         <!-- <button mat-raised-button color="primary" routerLink="/home" class="spacing">Home</button> -->
-        <button mat-raised-button color="primary" routerLink="/addNewProduct" *ngIf="isDistributor()" class="spacing">Add new Product</button>
+        <button mat-raised-button color="primary" routerLink="/addNewInventory" *ngIf="isDistributor()" class="spacing">Add new inventory</button>
         <!-- to add new navbar which will be visible to specific user only  -->
-        <button mat-raised-button color="primary" routerLink="/showProductDetails" *ngIf="isDistributor() || isAdmin()" class="spacing">Show product Details</button>
+        <button mat-raised-button color="primary" routerLink="/showInventoryDetails" *ngIf="isAdmin()" class="spacing">Show all inventory Details</button>
+        <button mat-raised-button color="primary" routerLink="/showMyInventory" *ngIf="isDistributor()" class="spacing">Show my inventory</button>
         <button mat-raised-button color="primary" routerLink="/retailerHome" *ngIf="isUser()" class="spacing">Show product Details</button>
+        
         <button mat-raised-button color="primary" routerLink="/cart" *ngIf="isUser()" class="spacing">Cart</button>
         <button mat-raised-button color="primary" routerLink="/MyOrders" *ngIf="isUser()" class="spacing">MyOrders</button>
-        <button mat-raised-button color="primary" routerLink="/orderInformation" *ngIf="isAdmin() || isDistributor()" class="spacing">Order Information</button>
+        <button mat-raised-button color="primary" routerLink="/showMyOrders" *ngIf="isDistributor()" class="spacing">My Order Information</button>
+        <button mat-raised-button color="primary" routerLink="/orderInformation" *ngIf="isAdmin()" class="spacing">Order Information</button>
       </mat-toolbar>
       <div class="button-container">
         <button *ngIf="!isLoggedIn()" mat-raised-button color="primary" routerLink="/login">Login</button>

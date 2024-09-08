@@ -22,6 +22,7 @@ public class User {
     )
     private Set<Role> role;
 
+
     public String getUserName() {
         return userName;
     }

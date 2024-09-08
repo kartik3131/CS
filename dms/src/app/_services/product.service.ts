@@ -25,6 +25,13 @@ export class ProductService {
     return this.httpClient.get<Product[]>("http://localhost:9090/getAllProducts");
   }
 
+  // 
+  public getAllProductsByDistributor()
+  {
+    return this.httpClient.get<Product[]>("http://localhost:9090/getDistributorProducts");
+  }
+  // 
+  
   public deleteProduct(productId:Number)
   {
     return this.httpClient.delete("http://localhost:9090/deleteProductDetails/"+productId);
@@ -69,5 +76,12 @@ export class ProductService {
   public markAsDelivered(orderId: number)
   {
     return this.httpClient.get("http://localhost:9090/markOrderAsDelivered/"+orderId)
+  }
+  
+
+  public getDistributorOrderDetails():Observable<MyOrderDetails[]>
+  {
+        return this.httpClient.get<MyOrderDetails[]>("http://localhost:9090/getDistributorOrderDetails");
+
   }
 }

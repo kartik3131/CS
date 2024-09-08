@@ -14,10 +14,20 @@
       <td mat-cell *matCellDef="let element"> {{element.productName}} </td>
     </ng-container>
 
+    <ng-container matColumnDef="Distributor Name">
+      <th mat-header-cell *matHeaderCellDef>Distributor Name</th>
+      <td mat-cell *matCellDef="let element"> {{element.updatedBy}} </td>
+    </ng-container>
+
     <!-- Weight Column -->
     <ng-container matColumnDef="Description">
       <th mat-header-cell *matHeaderCellDef>Description</th>
       <td mat-cell *matCellDef="let element"> {{element.productDescription}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="Quantity">
+      <th mat-header-cell *matHeaderCellDef> Quantity </th>
+      <td mat-cell *matCellDef="let element"> {{element.quantity}} </td>
     </ng-container>
 
     <!-- Symbol Column -->
@@ -30,6 +40,9 @@
       <th mat-header-cell *matHeaderCellDef> Actual Price </th>
       <td mat-cell *matCellDef="let element"> {{element.productActualPrice}} </td>
     </ng-container>
+
+
+
 
     <!-- images  -->
     <ng-container matColumnDef="Actions">

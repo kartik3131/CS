@@ -37,7 +37,9 @@ export class ProductResolveService implements Resolve<Product> {
       productDescription: "",
       productActualPrice: 0,
       productDiscountedPrice: 0,
-      productImages: []
+      productImages: [],
+      quantity:0,
+      updatedBy:""
     }
   }
 }

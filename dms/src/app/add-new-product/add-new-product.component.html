@@ -31,6 +31,21 @@
                         <input matInput placeholder="Product Discounted Price"
                             [(ngModel)]="product.productDiscountedPrice" name="productDiscountedPrice">
                     </mat-form-field>
+                    
+                    <!--  -->
+                    <mat-form-field appearance="outline" class="w-100">
+                        <mat-label>Product quantity</mat-label>
+                        <input matInput placeholder="Product quantity" [(ngModel)]="product.quantity"
+                            name="quantity">
+                    </mat-form-field>
+
+                    <mat-form-field appearance="outline" class="w-100">
+                        <mat-label>Udated by</mat-label>
+                        <input matInput placeholder="Enter your username" [(ngModel)]="product.updatedBy"
+                            name="updatedBy">
+                    </mat-form-field>
+                    <!--  -->
+
 
                     <div align="end">
                         <button mat-stroked-button color="primary" style="margin-right: 4px;"

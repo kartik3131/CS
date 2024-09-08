@@ -1,5 +1,6 @@
 package com.example.DMS_BE.controller;
 
+import com.example.DMS_BE.configuration.JwtRequestFilter;
 import com.example.DMS_BE.entity.ImageModel;
 import com.example.DMS_BE.entity.Product;
 import com.example.DMS_BE.service.ProductService;
@@ -26,7 +27,15 @@ public class ProductController {
         try {
             Set<ImageModel> images = uploadImage(file);
             product.setProductImages(images);
-            return productService.addNewProduct(product);
+
+            // Check if product exists and update it or create a new one
+            Product existingProduct = productService.findProductByDistributorAndName(product.getUpdatedBy(), product.getProductName());
+            if (existingProduct != null) {
+                product.setProductId(existingProduct.getProductId());
+                return productService.updateProduct(product);
+            } else {
+                return productService.addNewProduct(product);
+            }
         } catch (Exception e) {
             System.out.println(e.getMessage());
             return null;
@@ -52,13 +61,7 @@ public class ProductController {
     //@PreAuthorize("hasRole('Admin') or hasRole('Distributor')")
     @GetMapping({"/getAllProducts"})
     public List<Product> getAllProducts()
-//            @RequestParam(defaultValue = "0") int pageNumber,
-//                                        @RequestParam(defaultValue = "") String searchKey)
     {
-//        List<Product> result = productService.getAllProducts(pageNumber, searchKey);
-//        System.out.println("Result size is "+ result.size());
-//        return result;
-
         return productService.getAllProducts();
     }
 
@@ -67,7 +70,7 @@ public class ProductController {
         return productService.getProductDetailsById(productId);
     }
 
-    @PreAuthorize("hasRole('Admin')")
+    @PreAuthorize("hasRole('Admin') or hasRole('Distributor')")
     @DeleteMapping({"/deleteProductDetails/{productId}"})
     public void deleteProductDetails(@PathVariable("productId") Integer productId) {
         productService.deleteProductDetails(productId);
@@ -78,6 +81,14 @@ public class ProductController {
     public List<Product> getProductDetails(@PathVariable(name = "isSingleProductCheckout" ) boolean isSingleProductCheckout,
                                            @PathVariable(name = "productId")  Integer productId) {
         return productService.getProductDetails(isSingleProductCheckout, productId);
+    }
+
+//    updated
+    @PreAuthorize("hasRole('Distributor')")
+    @GetMapping({"/getDistributorProducts"})
+    public List<Product> getProductsByDistributor() {
+        String currentDistributor = JwtRequestFilter.CURRENT_USER;
+        return productService.getProductsByUpdatedBy(currentDistributor);
     }
 
 

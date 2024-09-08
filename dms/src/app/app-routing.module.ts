@@ -20,21 +20,27 @@ import { RegisterDistributorComponent } from './register-distributor/register-di
 import { CartComponent } from './cart/cart.component';
 import { MyOrdersComponent } from './my-orders/my-orders.component';
 import { OrderDetailsComponent } from './order-details/order-details.component';
+import { ShowProductDistributorComponent } from './show-product-distributor/show-product-distributor.component';
+import { OrderDistributorInfoComponent } from './order-distributor-info/order-distributor-info.component';
 
 const routes: Routes = [
   { path: "home", component: HomeComponent },
   { path: "admin", component: AdminComponent, canActivate: [AuthGuard], data: { roles: ['Admin'] } },
   { path: "user", component: UserComponent, canActivate: [AuthGuard], data: { roles: ['User'] } },
   { path: "distributor", component: DistributorComponent, canActivate: [AuthGuard], data: { roles: ['Distributor'] } },
+  { path: "showMyInventory", component: ShowProductDistributorComponent, canActivate: [AuthGuard], data: { roles: ['Distributor'] } },
+
+  {  path: "showMyOrders", component: OrderDistributorInfoComponent, canActivate: [AuthGuard], data: { roles: ['Distributor'] } },
+
   { path: "login", component: LoginComponent },
   { path: "forbidden", component: ForbiddenComponent },
   {
-    path: "addNewProduct", component: AddNewProductComponent, canActivate: [AuthGuard], data: { roles: ['Admin', 'Distributor'] },
+    path: "addNewInventory", component: AddNewProductComponent, canActivate: [AuthGuard], data: { roles: ['Admin', 'Distributor'] },
     resolve: {
       product: ProductResolveService
     }
   },
-  { path: "showProductDetails", component: ShowProductDetailsComponent, canActivate: [AuthGuard], data: { roles: ['Admin', 'Distributor'] } },
+  { path: "showInventoryDetails", component: ShowProductDetailsComponent, canActivate: [AuthGuard], data: { roles: ['Admin'] } },
   { path: "retailerHome", component: RetailerNavComponent, canActivate: [AuthGuard], data: { roles: ['User'] } },
   {
     path: "productViewDetails", component: ProductViewDetailsComponent,
@@ -59,7 +65,7 @@ const routes: Routes = [
 
   { path: "MyOrders", component:MyOrdersComponent, canActivate:[AuthGuard], data:{ roles: ['User']}},
 
-  { path: "orderInformation", component: OrderDetailsComponent, canActivate: [AuthGuard], data: { roles: ['Admin', 'Distributor'] } },
+  { path: "orderInformation", component: OrderDetailsComponent, canActivate: [AuthGuard], data: { roles: ['Admin'] } },
  
 ];
 

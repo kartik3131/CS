@@ -56,6 +56,7 @@ export class LoginComponent implements OnInit {
       },
       (error) => {
         console.error(error);
+        alert("Login failed. Please check your credentials and try again.");
         this.loginError = 'Login failed. Please check your credentials and try again.';
       }
     );

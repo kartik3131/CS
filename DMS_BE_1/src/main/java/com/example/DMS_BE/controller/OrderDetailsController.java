@@ -41,4 +41,10 @@ public class OrderDetailsController {
         orderDetailService.markOrderAsDelivered(orderId);
     }
 
+    @PreAuthorize("hasRole('Distributor')")
+    @GetMapping({"/getDistributorOrderDetails"})
+    public List<OrderDetail> getDistributorOrderDetails() {
+        return orderDetailService.getAllOrderDetailsForDistributor();
+    }
+
 }

@@ -15,6 +15,26 @@ public class Product {
     private Double productDiscountedPrice;
     private Double productActualPrice;
 
+    // Updated here
+    private Integer quantity;
+    private String updatedBy;
+
+    public String getUpdatedBy() {
+        return updatedBy;
+    }
+
+    public void setUpdatedBy(String updatedBy) {
+        this.updatedBy = updatedBy;
+    }
+
+    public Integer getQuantity() {
+        return quantity;
+    }
+    public void setQuantity(Integer quantity) {
+        this.quantity = quantity;
+    }
+    //Updation of the code done till here
+
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(name = "product_images",
             joinColumns = {

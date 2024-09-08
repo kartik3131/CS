@@ -13,7 +13,7 @@ export class MyOrdersComponent implements OnInit{
       this.getOrderDetails();
   }
 
-  displayedColumns: string[] = ['Name', 'Address', 'Contact No.', 'Order Amount','Status'];
+  displayedColumns: string[] = ['Name', 'Address', 'From','Contact No.','Quantity' ,'Order Amount','Status'];
 
   myOrderDetails: MyOrderDetails[] =[];
 

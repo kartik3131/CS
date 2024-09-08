@@ -38,6 +38,8 @@ import {MatSelectModule} from '@angular/material/select';
 import { CartComponent } from './cart/cart.component';
 import { MyOrdersComponent } from './my-orders/my-orders.component';
 import { OrderDetailsComponent } from './order-details/order-details.component';
+import { ShowProductDistributorComponent } from './show-product-distributor/show-product-distributor.component';
+import { OrderDistributorInfoComponent } from './order-distributor-info/order-distributor-info.component';
 
 
 @NgModule({
@@ -62,7 +64,9 @@ import { OrderDetailsComponent } from './order-details/order-details.component';
     RegisterDistributorComponent,
     CartComponent,
     MyOrdersComponent,
-    OrderDetailsComponent
+    OrderDetailsComponent,
+    ShowProductDistributorComponent,
+    OrderDistributorInfoComponent
   ],
   imports: [
     BrowserModule,

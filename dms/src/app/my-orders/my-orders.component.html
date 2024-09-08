@@ -12,9 +12,19 @@
             <td mat-cell *matCellDef="let element"> {{element.orderFullOrder}} </td>
         </ng-container>
 
+        <ng-container matColumnDef="From">
+            <th mat-header-cell *matHeaderCellDef> From </th>
+            <td mat-cell *matCellDef="let element"> {{element.product.updatedBy}} </td>
+        </ng-container>
+
         <ng-container matColumnDef="Contact No.">
             <th mat-header-cell *matHeaderCellDef> Contact No. </th>
             <td mat-cell *matCellDef="let element"> {{element.orderContactNumber}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="Quantity">
+            <th mat-header-cell *matHeaderCellDef> Quantity</th>
+            <td mat-cell *matCellDef="let element"> {{element.quantity}} </td>
         </ng-container>
 
         <ng-container matColumnDef="Order Amount">

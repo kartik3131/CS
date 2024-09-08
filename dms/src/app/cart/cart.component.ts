@@ -36,17 +36,6 @@ export class CartComponent implements OnInit {
       isSingleProductCheckout: false,
       id: 0
     }]);
-
-    // this.productService.getProductDetails(false,0).subscribe(
-    //   (response:any)=>
-    //     {
-    //       console.log(response);
-    //     },
-    //     (error)=>
-    //     {
-    //       console.log(error);
-    //     }
-    //   );
   }
 
   delete(cartId: any) {

@@ -3,24 +3,24 @@ import { ProductService } from '../_services/product.service';
 import { MyOrderDetails } from '../_model/order.model';
 
 @Component({
-  selector: 'app-order-details',
-  templateUrl: './order-details.component.html',
-  styleUrl: './order-details.component.css'
+  selector: 'app-order-distributor-info',
+  templateUrl: './order-distributor-info.component.html',
+  styleUrl: './order-distributor-info.component.css'
 })
-export class OrderDetailsComponent implements OnInit{
+export class OrderDistributorInfoComponent implements OnInit {
 
   constructor(private productService:ProductService){}
 
   ngOnInit(): void {
-    this.getAllOrderDetails();
+    this.getDistributorOrderDetails();
   }
   dataSource: MyOrderDetails[] = [];
 
   displayedColumns: string[] = ['Id', 'Product Name','Retailer','Name','Distributor','Address','Contact No.','Status','Action'];
 
-  public getAllOrderDetails()
+  public getDistributorOrderDetails()
   {
-    this.productService.getAllOrdersDetails().subscribe(
+    this.productService.getDistributorOrderDetails().subscribe(
       (respons)=>
       {
         this.dataSource=respons;
@@ -38,7 +38,7 @@ export class OrderDetailsComponent implements OnInit{
       (response)=>
       {
         console.log(response);
-        this.getAllOrderDetails();
+        this.getDistributorOrderDetails();
       },
       (error)=>
       {
@@ -46,4 +46,5 @@ export class OrderDetailsComponent implements OnInit{
       }
     )
   }
+
 }

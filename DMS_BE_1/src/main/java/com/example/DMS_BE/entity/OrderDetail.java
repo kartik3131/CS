@@ -16,20 +16,27 @@ public class OrderDetail {
     private String orderStatus;
     private Double orderAmount;
 
+    private Integer quantity;
+
 //    public OrderDetail() {
 //    }
-
     @OneToOne
     private Product product;
-
     @OneToOne
     private User user;
-
 
     public OrderDetail() {
     }
 
-    public OrderDetail(String orderFullName, String orderFullOrder, String orderContactNumber, String orderAlternateContactNumber, String orderStatus, Double orderAmount, Product product, User user) {
+    public Integer getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(Integer quantity) {
+        this.quantity = quantity;
+    }
+
+    public OrderDetail(String orderFullName, String orderFullOrder, String orderContactNumber, String orderAlternateContactNumber, String orderStatus, Double orderAmount, Product product, User user, Integer quantity) {
         this.orderFullName = orderFullName;
         this.orderFullOrder = orderFullOrder;
         this.orderContactNumber = orderContactNumber;
@@ -38,6 +45,7 @@ public class OrderDetail {
         this.orderAmount = orderAmount;
         this.product = product;
         this.user = user;
+        this.quantity=quantity;
     }
 
     public String getOrderStatus() {

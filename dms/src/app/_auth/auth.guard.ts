@@ -38,4 +38,20 @@ export class AuthGuard implements CanActivate
     this.router.navigate(['/login']);
     return false;
   }
+
+
+  getToken(): string | null {
+    return localStorage.getItem('token'); // or sessionStorage, wherever you store the token
+  }
+
+  getCurrentUser(): string | null {
+    const token = this.getToken();
+    if (token) {
+      // Parse JWT token to get user details (e.g., username)
+      const payload = atob(token.split('.')[1]); // Decode the payload of the JWT
+      const userInfo = JSON.parse(payload);
+      return userInfo.username; // or email or whatever identifier you use
+    }
+    return null;
+  }
 }

@@ -10,5 +10,6 @@ export interface MyOrderDetails
     orderAmount:number,
     orderStatus:string,
     product:Product,
-    user:any
+    user:any,
+    quantity:number
 }

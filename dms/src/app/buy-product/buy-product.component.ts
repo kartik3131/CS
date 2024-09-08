@@ -56,6 +56,8 @@ export class BuyProductComponent implements OnInit{
         (error:HttpErrorResponse)=>
         {
           console.log(error);
+          alert("Insufficient quantity ");
+          orderForm.reset();
         }
       );
     }
