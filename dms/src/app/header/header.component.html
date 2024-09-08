@@ -1,0 +1,45 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">DMS</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page"  routerLink="/admin"
+          *ngIf = "userService.roleMatch(['Admin'])">Admin</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page"  routerLink="/user"
+          *ngIf = "userService.roleMatch(['User'])">Retailer</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page"  routerLink="/distributor"
+          *ngIf = "userService.roleMatch(['Distributor'])">Distributor</a>
+        </li>
+      </ul>
+      
+      <mat-toolbar color="grey" *ngIf="isLoggedIn()">
+        <!-- <button mat-raised-button color="primary" routerLink="/home" class="spacing">Home</button> -->
+        <button mat-raised-button color="primary" routerLink="/addNewProduct" *ngIf="isDistributor()" class="spacing">Add new Product</button>
+        <!-- to add new navbar which will be visible to specific user only  -->
+        <button mat-raised-button color="primary" routerLink="/showProductDetails" *ngIf="isDistributor() || isAdmin()" class="spacing">Show product Details</button>
+        <button mat-raised-button color="primary" routerLink="/retailerHome" *ngIf="isUser()" class="spacing">Show product Details</button>
+        <button mat-raised-button color="primary" routerLink="/cart" *ngIf="isUser()" class="spacing">Cart</button>
+        <button mat-raised-button color="primary" routerLink="/MyOrders" *ngIf="isUser()" class="spacing">MyOrders</button>
+        <button mat-raised-button color="primary" routerLink="/orderInformation" *ngIf="isAdmin() || isDistributor()" class="spacing">Order Information</button>
+      </mat-toolbar>
+      <div class="button-container">
+        <button *ngIf="!isLoggedIn()" mat-raised-button color="primary" routerLink="/login">Login</button>
+        <button *ngIf="isLoggedIn()" mat-raised-button color="warn" (click)="logout()">Logout</button>
+      </div>
+      
+
+    </div>
+  </nav>
+  
+  
+  

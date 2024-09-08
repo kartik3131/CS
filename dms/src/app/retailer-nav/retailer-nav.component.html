@@ -1,0 +1,21 @@
+<div class="container mt-1">
+    <mat-grid-list cols="5" rowHeight="3:6">
+        <mat-grid-tile *ngFor="let p of productDetails">
+            <div class="row product-page">
+                <img class="mt-0" [src]="p.productImages[0].url"  alt="">
+                <div class="mt-0">
+                    <p>Name: {{p.productName}}</p> 
+                    <p style="white-space: inherit; height: 40px; width: 200px; overflow: hidden; text-overflow: ellipsis; word-wrap: break-word;">Description: {{p.productDescription}}</p> 
+                </div>
+                <!-- /interpolation  -->
+                <div class="mt-0">
+                    <p>Price:$ {{p.productDiscountedPrice}}</p> <p>Discounted Price:$ {{p.productActualPrice}}</p> 
+                </div>
+                <div class="mt-0">
+                    <button type="button" mat-raised-button color="warn" (click)="showProductDetails(p.productId)">View</button>
+                </div>
+            </div>
+            
+        </mat-grid-tile>
+      </mat-grid-list>
+</div>

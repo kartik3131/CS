@@ -1,0 +1,23 @@
+.navbar {
+    padding: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .navbar-toggler-icon {
+    display: none;
+  }
+  
+  .example-spacer {
+    flex: 1 1 auto;
+  }
+  
+  .spacing {
+    margin-right: 10px; 
+  }
+
+  .button-container {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%; /* Ensure the container takes full width */
+  }
+  

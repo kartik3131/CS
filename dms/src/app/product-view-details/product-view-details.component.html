@@ -1,0 +1,35 @@
+<div class="container mt-2">
+    <div class="row">
+        <div class="col-6">
+            <mat-grid-list cols="3" gutterSize="10px" rowHeight="1:2" style="height: 500px;" *ngFor="let file of product?.productImages">
+                <mat-grid-tile>
+                  <img [src]="file.url" alt="">
+                </mat-grid-tile>
+              </mat-grid-list>
+              
+        </div>
+        <div class="col-6">
+            <div class="product-information ">
+                <div class = "mt-3">
+                    <h3>{{product?.productName}}</h3>
+                </div>    
+                <div class = "mt-3">
+                    <b>Description:</b>
+                    <br>{{product?.productDescription}}          
+                </div>
+                <div class = "mt-3">
+                    <b>Price:</b>
+                    <br>{{product?.productActualPrice}}   
+                    <br>
+                    <b>Discounted Price:</b>
+                    <br>{{product?.productDiscountedPrice}}         
+                </div>
+                <div class = "mt-3">
+                    <button mat-raised-button color="warn" style="width: 200px;" (click)="buyProduct(product?.productId)">Buy Now</button> 
+                    &nbsp;
+                    <button mat-raised-button style="width: 200px;" (click)="addToCart(product?.productId)"> Add to Cart</button>      
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

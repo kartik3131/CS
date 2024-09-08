@@ -1,0 +1,29 @@
+.container {
+    max-width: 50%;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .card {
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+  }
+  
+  .form-control {
+    margin-bottom: 10px;
+  }
+  
+  .btn-outline-primary {
+    width: 100%;
+    padding: 10px;
+    border-radius: 10px;
+  }
+  
+  mat-raised-button {
+    margin-top: 10px;
+    width: 100%;
+    padding: 10px;
+    border-radius: 10px;
+  }
+  

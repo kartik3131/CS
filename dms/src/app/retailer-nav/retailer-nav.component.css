@@ -1,0 +1,11 @@
+mat-grid-tile{
+    border: 1px solid lightgrey;
+}
+
+.product-page
+{
+    max-width: 90%;
+    max-height: 90%;
+    margin-left: auto;
+    margin-right: auto;
+}
