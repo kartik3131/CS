@@ -46,6 +46,7 @@ public class UserService {
         adminUser.setUserPassword(getEncodedPassword("Admin@123"));
         adminUser.setUserFirstName("Admin");
         adminUser.setUserLastName("123");
+        adminUser.setEmail("admin@gmail.com");
         Set<Role> adminRoles = new HashSet<>();
         adminRoles.add(adminRole);
         adminUser.setRole(adminRoles);
@@ -56,6 +57,7 @@ public class UserService {
         user.setUserPassword(getEncodedPassword("Retailer@123"));
         user.setUserFirstName("Retailer");
         user.setUserLastName("123");
+        user.setEmail("Retailer@gmail.com");
         Set<Role> userRoles = new HashSet<>();
         userRoles.add(userRole);
         user.setRole(userRoles);
@@ -66,6 +68,7 @@ public class UserService {
         Distributor.setUserPassword(getEncodedPassword("Distributor@123"));
         Distributor.setUserFirstName("Distributor");
         Distributor.setUserLastName("123");
+        Distributor.setEmail("Distributor@gmail.com");
         Set<Role> DistiRoles = new HashSet<>();
         DistiRoles.add(DistiRole);
         Distributor.setRole(DistiRoles);

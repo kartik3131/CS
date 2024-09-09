@@ -6,12 +6,11 @@
                 <div class="mt-0">
                     <p>Name: {{p.productName}}</p> 
                     <p style="white-space: inherit; height: 40px; width: 200px; overflow: hidden; text-overflow: ellipsis; word-wrap: break-word;">Description: {{p.productDescription}}</p> 
-                </div>
                 <!-- /interpolation  -->
-                <div class="mt-0">
-                    <p>Price:$ {{p.productDiscountedPrice}}</p> <p>Discounted Price:$ {{p.productActualPrice}}</p> 
-                </div>
+                   <p>Price:$ {{p.productDiscountedPrice}}</p> <p>Discounted Price:$ {{p.productActualPrice}}</p> 
                    <p>Quantity: {{p.quantity}}</p>
+                   <p>Quantity: {{p.updatedBy}}</p>
+                </div>
                 <div class="mt-0">
                     <button type="button" mat-raised-button color="warn" (click)="showProductDetails(p.productId)">View</button>
                 </div>

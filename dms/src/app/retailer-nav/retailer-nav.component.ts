@@ -11,40 +11,39 @@ import { Router } from '@angular/router';
   templateUrl: './retailer-nav.component.html',
   styleUrl: './retailer-nav.component.css'
 })
-export class RetailerNavComponent implements OnInit{
+export class RetailerNavComponent implements OnInit {
   productDetails: Product[] = [];
   
+  constructor(private productService: ProductService, 
+              private imageProcessingService: ImageProcessingServiceService,
+              private router: Router) {}
+
   ngOnInit(): void {
     this.getAllProducts();
   }
 
-  constructor(private productService:ProductService, 
-    private imageProcessingService:ImageProcessingServiceService,
-    private router:Router
-  ){}
-
-  public getAllProducts()
-  {
-     this.productService.getAllProducts()
-     .pipe(
-      map((x:Product[],i)=>x.map((product: Product) => this.imageProcessingService.createImages(product)))
-     )
-     .subscribe(
-      (resp: Product[])=>
-      {
-        console.log(resp);
-        this.productDetails=resp;
-      },
-      (error:HttpErrorResponse)=>
-      {
-        console.log(error);
-      }
-    );
+  public getAllProducts() {
+    this.productService.getAllProducts()
+      .pipe(
+        // Process images and filter products with quantity >= 5
+        map((products: Product[]) => 
+          products
+            .map((product: Product) => this.imageProcessingService.createImages(product))
+            .filter((product: Product) => product.quantity >= 5) // Filter products
+        )
+      )
+      .subscribe(
+        (resp: Product[]) => {
+          console.log(resp);
+          this.productDetails = resp;
+        },
+        (error: HttpErrorResponse) => {
+          console.log(error);
+        }
+      );
   }
 
-  showProductDetails(productId: any)
-  {
-    this.router.navigate(['/productViewDetails', {productId: productId}]);
+  showProductDetails(productId: any) {
+    this.router.navigate(['/productViewDetails', { productId: productId }]);
   }
-
 }
